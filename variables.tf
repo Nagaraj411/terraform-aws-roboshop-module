@@ -13,3 +13,12 @@ variable "zone_id" {
 variable "zone_name" {
   default = "devops84.shop"
 }
+
+
+variable "component" {
+  
+}
+
+variable "rule_priority" {
+  
+}

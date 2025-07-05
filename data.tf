@@ -30,10 +30,14 @@ data "aws_ssm_parameter" "private_subnet_ids" {
 }
 # this script retrieves the private subnet IDs from SSM parameter store for the project and environment sent by VPC group
 
-data "aws_ssm_parameter" "catalogue_sg_id" {
-  name = "/${var.project}/${var.environment}/catalogue_sg_id"
+data "aws_ssm_parameter" "sg_id" {
+  name = "/${var.project}/${var.environment}/${var.component}_sg_id"
 }
 
 data "aws_ssm_parameter" "backend_alb_listener_arn" {
   name = "/${var.project}/${var.environment}/backend_alb_listener_arn"
 } # import form 50-backend-ALB parameter to 60-catalogue data.tf
+
+data "aws_ssm_parameter" "frontend_alb_listener_arn" {
+  name = "/${var.project}/${var.environment}/frontend_alb_listener_arn"
+}
