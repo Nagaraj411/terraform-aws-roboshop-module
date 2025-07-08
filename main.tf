@@ -35,10 +35,10 @@ resource "terraform_data" "main" {
   triggers_replace = [
     aws_instance.main.id 
   ]
-  provisioner "file" {
-    source      = "bootstrap.sh"  # bootstrap
-    destination = "/tmp/${var.component}.sh"
-  }
+    provisioner "file" {
+        source = "bootstrap.sh"
+        destination = "/tmp/${var.component}.sh"
+    }
   connection {
     type     = "ssh"
     user     = "ec2-user"
