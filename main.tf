@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "main" {
-  name                 = "${var.project}-${var.environment}-${var.component}" 
+  name                 = "${var.project}-${var.environment}-${var.component}-tseting" 
   port                 = local.tg_port
   protocol             = "HTTP"
   vpc_id               = local.vpc_id
