@@ -31,26 +31,26 @@ resource "aws_instance" "main" {
 }
 
 
-resource "terraform_data" "main" { 
-  triggers_replace = [
-    aws_instance.main.id 
-  ]
+resource "terraform_data" "main" {
+    triggers_replace = [
+        aws_instance.main.id # once catalogue instance is created then this will trigger and take the latest catalogue id
+    ]
     provisioner "file" {
         source = "bootstrap.sh"
         destination = "/tmp/${var.component}.sh"
     }
-  connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    password = "DevOps321"
-    host     = aws_instance.main.private_ip
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /tmp/${var.component}.sh",
-      "sudo sh /tmp/${var.component}.sh ${var.component} ${var.environment}" 
-    ]
-  }
+    connection {
+        type = "ssh"
+        user = "ec2-user"
+        password = "DevOps321"
+        host = aws_instance.main.private_ip # connecting to the instance through private_ip bcoz catalogue component  is in private subnet
+    }
+    provisioner "remote-exec" {
+        inline = [
+            "chmod +x /tmp/${var.component}.sh", # executing this commands inside instance so using remote exec
+            "sudo sh /tmp/${var.component}.sh ${var.component} ${var.environment}"
+        ]
+    }
 }
 
 resource "aws_ec2_instance_state" "main" {
