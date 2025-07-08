@@ -36,7 +36,7 @@ resource "terraform_data" "main" {
     aws_instance.main.id 
   ]
   provisioner "file" {
-    source      = "main.sh"  # bootstrap
+    source      = "bootstrap.sh"  # bootstrap
     destination = "/tmp/${var.component}.sh"
   }
   connection {
