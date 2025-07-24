@@ -7,32 +7,40 @@ A **Terraform module** to automate the **golden AMI creation** and **autoscaling
 ## 🚀 What It Does
 
 This module automates:
-
-🔹 Launching a temporary EC2 instance  
-🔹 Bootstrapping with a shell script  
-🔹 Stopping and creating a custom AMI  
-🔹 Terminating the temp instance  
-🔹 Creating a Launch Template with AMI  
-🔹 Launching an Auto Scaling Group  
-🔹 Registering with ALB Target Group  
-🔹 Setting up CPU-based Auto Scaling  
-🔹 Defining Listener Rules for routing
+🔹 🖥️ Launches a temporary EC2 instance  
+🔹 🔐 Uploads and runs a bootstrap shell script  
+🔹 ⏹️ Stops the instance and creates a custom AMI  
+🔹 🧽 Terminates the temporary EC2 instance  
+🔹 📦 Creates a Launch Template using the AMI  
+🔹 🚀 Launches an Auto Scaling Group from the template  
+🔹 🔗 Registers instances with an ALB Target Group  
+🔹 ⚙️ Configures listener rules for HTTP routing  
+🔹 📈 Applies CPU-based Auto Scaling policies 
 
 ---
 
 ## 📦 AWS Resources Used
 
-| 🧱 Resource Type              | 🔍 Purpose                                               |
-|-----------------------------|---------------------------------------------------------|
-| `aws_instance`              | Launch temporary instance for bootstrap                |
-| `terraform_data`            | Upload and execute shell script, manage cleanup        |
-| `aws_ami_from_instance`     | Create custom AMI from preconfigured EC2               |
-| `aws_launch_template`       | Define EC2 launch config using custom AMI              |
-| `aws_autoscaling_group`     | Spin up scalable EC2 instances                         |
-| `aws_autoscaling_policy`    | Auto scale based on CPU usage                          |
-| `aws_lb_target_group`       | Register instances for load balancing                  |
-| `aws_lb_listener_rule`      | Host-based routing to services                         |
-| `aws_ec2_instance_state`    | Stop instance before AMI creation                      |
+| 🧱 **Resource Type**           | 🔍 **Purpose**                                         |
+|-------------------------------|----------------------------------------------------------|
+| 🖥️ `aws_instance`            | Launches a temporary EC2 for app setup and AMI build     |
+| 📁 `terraform_data`          | Uploads bootstrap script, executes remote/local tasks    |
+| ⏹️ `aws_ec2_instance_state`  | Stops the EC2 instance before AMI creation               |
+| 📸 `aws_ami_from_instance`   | Creates a custom AMI from the configured instance        |
+| 🧬 `aws_launch_template`     | Defines EC2 configuration using the created AMI          |
+| 📈 `aws_autoscaling_group`   | Launches and scales EC2 instances across subnets         |
+| ⚙️ `aws_autoscaling_policy`  | Auto scales based on CPU utilization metrics             |
+| 🎯 `aws_lb_target_group`     | Registers the instances for ALB-based routing            |
+| 🌍 `aws_lb_listener_rule`    | Routes HTTP traffic to services based on host headers    |
+
+---
+
+✅ This setup ensures:
+
+✨ **Immutable Deployments**  
+📏 **Horizontal Scalability**  
+🌐 **Load-Balanced Infrastructure**  
+🧩 All powered via **Terraform Infrastructure as Code**
 
 ---
 
