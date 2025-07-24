@@ -7,15 +7,15 @@ A **Terraform module** to automate the **golden AMI creation** and **autoscaling
 ## 🚀 What It Does
 
 This module automates:
-🔹 🖥️ Launches a temporary EC2 instance  
-🔹 🔐 Uploads and runs a bootstrap shell script  
-🔹 ⏹️ Stops the instance and creates a custom AMI  
-🔹 🧽 Terminates the temporary EC2 instance  
-🔹 📦 Creates a Launch Template using the AMI  
-🔹 🚀 Launches an Auto Scaling Group from the template  
-🔹 🔗 Registers instances with an ALB Target Group  
-🔹 ⚙️ Configures listener rules for HTTP routing  
-🔹 📈 Applies CPU-based Auto Scaling policies 
+🖥️ Launches a temporary EC2 instance  
+🔐 Uploads and runs a bootstrap shell script  
+⏹️ Stops the instance and creates a custom AMI  
+🧽 Terminates the temporary EC2 instance  
+📦 Creates a Launch Template using the AMI  
+🚀 Launches an Auto Scaling Group from the template  
+🔗 Registers instances with an ALB Target Group  
+⚙️ Configures listener rules for HTTP routing  
+📈 Applies CPU-based Auto Scaling policies 
 
 ---
 
